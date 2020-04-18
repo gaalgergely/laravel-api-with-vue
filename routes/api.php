@@ -17,3 +17,19 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/contacts/{contact}', 'ContactsController@show');
+Route::post('/contacts', 'ContactsController@store');
+/**
+ * @example
+ * can be used the PATCH method also
+ *
+ * Route::patch('/contacts/{contact}', 'ContactsController@update');
+ *
+ * Route::match(array('PUT', 'PATCH'), "/contacts/{contact}", array(
+ *  'uses' => 'ContactsController@update',
+ *  'as' => 'contacts.update'
+ * ));
+ */
+Route::put('/contacts/{contact}', 'ContactsController@update');
+Route::delete('/contacts/{contact}', 'ContactsController@destroy');
