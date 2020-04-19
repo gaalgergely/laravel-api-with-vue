@@ -13,6 +13,16 @@ class Contact extends Model
 
     public $timestamps = false;
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function path()
+    {
+        return url('/contacts/' . $this->id);
+    }
+
     public function setBirthdayAttribute($birthday)
     {
         $this->attributes['birthday'] = Carbon::parse($birthday);

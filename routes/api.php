@@ -14,12 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:api')->group(function () {
+
+    Route::get('/contacts', 'ContactsController@index');
+    Route::get('/contacts/{contact}', 'ContactsController@show');
+    Route::post('/contacts', 'ContactsController@store');
+    Route::put('/contacts/{contact}', 'ContactsController@update');
+    Route::delete('/contacts/{contact}', 'ContactsController@destroy');
 });
 
-Route::get('/contacts/{contact}', 'ContactsController@show');
-Route::post('/contacts', 'ContactsController@store');
 /**
  * @example
  * can be used the PATCH method also
@@ -31,5 +34,3 @@ Route::post('/contacts', 'ContactsController@store');
  *  'as' => 'contacts.update'
  * ));
  */
-Route::put('/contacts/{contact}', 'ContactsController@update');
-Route::delete('/contacts/{contact}', 'ContactsController@destroy');
