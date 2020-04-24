@@ -43,7 +43,7 @@
                     </div>
 
                     <div class="flex items-center">
-                        Search form | User profile
+                        <UserCircle :name="user.name" />
                     </div>
                 </div>
 
@@ -57,6 +57,8 @@
 </template>
 
 <script>
+    import UserCircle from '../components/UserCircle';
+
     export default {
         name: 'App',
 
@@ -64,8 +66,11 @@
             'user'
         ],
 
-        //created
-        mounted() {
+        components: {
+            UserCircle
+        },
+
+        created() {
             this.title = this.$route.meta.title;
 
             window.axios.interceptors.request.use(

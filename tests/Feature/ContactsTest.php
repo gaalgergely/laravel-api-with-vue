@@ -132,7 +132,7 @@ class ContactsTest extends TestCase
             'data' => [
                 'name' => $contact->name,
                 'email' => $contact->email,
-                'birthday' => $contact->birthday->format('Y-m-d\TH:i:s.\0\0\0\0\0\0\Z'),
+                'birthday' => $contact->birthday->format('m/d/Y'),
                 'company' => $contact->company
             ]
         ]);

@@ -19,7 +19,7 @@ class Contact extends JsonResource
                 'contact_id' => $this->id,
                 'name' => $this->name,
                 'email' => $this->email,
-                'birthday' => $this->birthday->format('Y-m-d\TH:i:s.\0\0\0\0\0\0\Z'),
+                'birthday' => $this->birthday->format('m/d/Y'),
                 'company' => $this->company
             ],
             'links' => [
