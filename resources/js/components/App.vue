@@ -58,7 +58,30 @@
 
 <script>
     export default {
-        name: 'App'
+        name: 'App',
+
+        props: [
+            'user'
+        ],
+
+        //created
+        mounted() {
+            this.title = this.$route.meta.title;
+
+            window.axios.interceptors.request.use(
+                (config) => {
+                    if (config.method === 'get') {
+                        config.url = config.url + '?api_token=' + this.user.api_token;
+                    } else {
+                        config.data = {
+                            ...config.data,
+                            api_token: this.user.api_token
+                        };
+                    }
+                    return config;
+                }
+            )
+        }
     };
 </script>
 
