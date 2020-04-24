@@ -31,7 +31,7 @@ class ContactsController extends Controller
     public function update(Contact $contact, ContactRequest $request)
     {
         $this->authorize('update', $contact);
-        $contact->update($request->except('api_token'));
+        $contact->update($request->except(['api_token', 'contact_id']));
         return (new ContactResource($contact))->response()->setStatusCode(Response::HTTP_OK);
     }
 
