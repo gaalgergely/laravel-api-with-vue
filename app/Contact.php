@@ -23,6 +23,11 @@ class Contact extends Model
         return '/contacts/' . $this->id;
     }
 
+    public function scopeBirthdays($query)
+    {
+        return $query->whereRaw('birthday LIKE "%-' . now()->format('m') . '-%"');
+    }
+
     public function setBirthdayAttribute($birthday)
     {
         $this->attributes['birthday'] = Carbon::parse($birthday);
